@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    
+  }
+  mat-paginator
+  {
+    width: 100%;
+  }
+
+th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .jumbotron {
+    background-size: cover;
+    position: fixed; 
+    height: 100%;
+    width: 100%;
+  }
+
+ 

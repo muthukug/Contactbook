@@ -1,0 +1,87 @@
+<div class="jumbotron" style="background-image: url(assets/images/bg-001.jpg);">
+    <mat-card class="card" style="width: 500px;background-image: url(assets/images/bg-001.jpg);">
+        <h2>
+            <b> Registration </b>
+        </h2>
+
+        <br>
+
+        <form class="example-form" (ngSubmit)="onSubmit(register)" #register="ngForm">
+
+            <mat-vertical-stepper #linearVerticalStepper="matVerticalStepper" [linear]="false">
+                <mat-step>
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="Type your Name" id="Name" name="Name" #name="ngModel"
+                            [(ngModel)]="user.name" required pattern="[a-zA-Z ]{3,}">
+                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is Required ::
+                            Only Alphabates
+                            Allowed</div>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                    </div>
+                </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>Fill out your Mobile Number</ng-template>
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Type your Mobile Number" id="phoneNo" name="phoneNo"
+                            #phoneNo="ngModel" [(ngModel)]="user.phoneNo" required pattern="[6789][0-9]{9}">
+                        <div [hidden]="phoneNo.valid || phoneNo.pristine" class="alert alert-danger">Enter Valid
+                            Mobile Number :: Number from 0-9 and Should be 10 digits</div>
+
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                        <button mat-button matStepperPrevious type="button">Back</button>
+                    </div>
+                </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>Fill out your Email</ng-template>
+                    <mat-form-field>
+                        <input matInput type="email" placeholder="Type your Email" id="email" name="email"
+                            #email="ngModel" [(ngModel)]="user.email" required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email Format (Eg:
+                            abc@xyz.com)</div>
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                        <button mat-button matStepperPrevious type="button">Back</button>
+                    </div>
+                </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>Fill out your Address</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <input matInput type="text" placeholder="Type your Address" id="address" name="address"
+                            #address="ngModel" [(ngModel)]="user.address" required pattern="[a-zA-Z0-9,./:;() ]{3,}">
+                        <div [hidden]="address.valid || address.pristine" class="alert alert-danger">Address is Required
+                            :: Only Alphabets, Numbers,
+                            Special character ,./:;() are Allowed
+                        </div>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                    </div>
+                </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>Confirm your information</ng-template>
+                    <div>
+                        <button mat-button type="submit" [disabled]=!register.valid>Done</button>
+                    </div>
+                </mat-step>
+
+            </mat-vertical-stepper>
+
+        </form>
+        <br>
+        <button style="background-color: rgb(211, 211, 211);left: 150px;" type="submit" mat-raised-button
+            (click)="back()">Back</button>
+    </mat-card>
+</div>
